@@ -6,7 +6,7 @@ import sys
 def estaAbierto(ip, puerto):
   s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   try:
-    s.connect((ip, int(puerto)))
+    s.connect((ip, puerto))
     s.shutdown(2)
     return True
   except:
@@ -39,7 +39,7 @@ for x in range(0,255):
     sys.stdout.write('%s\r' % progreso)
     if tienePing(ip):
       hostsActivos += 1
-      if estaAbierto(ip,'22'):
+      if estaAbierto(ip,22):
         sshAbiertos += 1
         try:
           if s.login(ip, 'usuario', 'passwd1'):
@@ -53,7 +53,7 @@ for x in range(0,255):
         except:
           continue
 
-print str(n) + 'hosts analizados. ' + str(hostsActivos) + ' hosts activos. ' + str(sshAbiertos) + ' servicios ssh identificados.'
+print str(n) + ' hosts analizados. ' + str(hostsActivos) + ' hosts activos. ' + str(sshAbiertos) + ' servicios ssh identificados.'
 print str(passwd1) + ' SSH con usuario/passwd1 detectados.'
 print hostsConPass1
 print str(passwd2) + ' SSH con usuario/passwd2 detectados'
