@@ -25,6 +25,7 @@ passwd1=0
 passwd2=0
 hostsConPass1=[]
 hostsConPass2=[]
+serviciosSSH=[]
 hostsActivos=0
 sshAbiertos=0
 n=0
@@ -42,6 +43,7 @@ for x in range(0,255):
       hostsActivos += 1
       if estaAbierto(ip,22):
         sshAbiertos += 1
+        serviciosSSH.append(ip)
         try:
           if s.login(ip, 'usuario', 'passwd1'):
             passwd1 += 1
@@ -59,3 +61,5 @@ print (str(passwd1) + ' SSH con usuario/passwd1 detectados.')
 print (*hostsConPass1, sep='\n')
 print (str(passwd2) + ' SSH con usuario/passwd2 detectados')
 print (*hostsConPass2, sep='\n')
+print ('Listado completo de servicios SSH:')
+print (*serviciosSSH, sep='\n')
