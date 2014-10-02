@@ -1,3 +1,4 @@
+from __future__ import print_function
 import pxssh
 import socket
 import os
@@ -53,8 +54,8 @@ for x in range(0,255):
         except:
           continue
 
-print str(n) + ' hosts analizados. ' + str(hostsActivos) + ' hosts activos. ' + str(sshAbiertos) + ' servicios ssh identificados.'
-print str(passwd1) + ' SSH con usuario/passwd1 detectados.'
-print hostsConPass1
-print str(passwd2) + ' SSH con usuario/passwd2 detectados'
-print hostsConPass2
+print ('\n' + str(n) + ' hosts analizados. ' + str(hostsActivos) + ' hosts activos. ' + str(sshAbiertos) + ' servicios ssh identificados.')
+print (str(passwd1) + ' SSH con usuario/passwd1 detectados.')
+print (*hostsConPass1, sep='\n')
+print (str(passwd2) + ' SSH con usuario/passwd2 detectados')
+print (*hostsConPass2, sep='\n')
